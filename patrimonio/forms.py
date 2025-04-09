@@ -1,6 +1,7 @@
 from django import forms
 from .models import Patrimonio
 from .models import Emprestimo
+from .models import Inventario
 
 class PatrimonioForm(forms.ModelForm):
     class Meta:
@@ -33,4 +34,13 @@ class EmprestimoForm(forms.ModelForm):
             'emp_devolvido': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
             'emp_status': forms.Select(attrs={'class': 'form-control'}),
             'emp_anotacao': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+        }
+
+class InventarioForm(forms.ModelForm):
+    class Meta:
+        model = Inventario
+        fields = '__all__'
+        widgets = {
+            'inv_descricao': forms.TextInput(attrs={'class': 'form-control'}),
+            'inv_data_criacao': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
         }

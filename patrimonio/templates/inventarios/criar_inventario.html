@@ -1,0 +1,11 @@
+{% extends 'inventarios/base.html' %}
+
+{% block content %}
+<h1>Criar Novo Inventário</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Salvar</button>
+    <a href="{% url 'listar_inventarios' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

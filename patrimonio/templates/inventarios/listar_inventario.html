@@ -1,0 +1,33 @@
+{% extends 'inventarios/base.html' %}
+
+{% block content %}
+<h2 class="mb-4">Lista de Inventários</h2>
+<a href="{% url 'criar_inventario' %}" class="btn btn-success mb-3">Novo Inventário</a>
+
+<table class="table table-striped table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Descrição</th>
+            <th>Data de Criação</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for inventario in inventarios %}
+        <tr>
+            <td>{{ inventario.inv_descricao }}</td>
+            <td>{{ inventario.inv_data_criacao }}</td>
+            <td>
+                <a href="{% url 'editar_inventario' inventario.id %}" class="btn btn-warning">Editar</a>
+                <a href="{% url 'excluir_inventario' inventario.id %}" class="btn btn-danger"
+                   onclick="return confirm('Tem certeza que deseja excluir este inventário?');">Excluir</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3" class="text-center">Nenhum inventário cadastrado.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

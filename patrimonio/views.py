@@ -4,6 +4,8 @@ from patrimonio.forms import PatrimonioForm
 from patrimonio.models import Patrimonio
 from patrimonio.forms import EmprestimoForm
 from patrimonio.models import Emprestimo
+from patrimonio.forms import InventarioForm
+from patrimonio.models import Inventario
 
 # Create your views here.
 
@@ -38,6 +40,7 @@ def excluir_patrimonio(request, pk):
     patrimonio.delete()
     return redirect('listar_patrimonios')
 
+# Emprestimos
 def criar_emprestimo(request):
     if request.method == 'POST':
         form = EmprestimoForm(request.POST)
@@ -68,3 +71,34 @@ def excluir_emprestimo(request, pk):
     emprestimo = get_object_or_404(Emprestimo, pk=pk)
     emprestimo.delete()
     return redirect('listar_emprestimos')
+
+#Inventario
+def criar_inventario(request):
+    if request.method == 'POST':
+        form = InventarioForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_inventarios')
+    else:
+        form = InventarioForm()
+    return render(request, 'inventarios/criar_inventario.html', {'form': form})
+
+def listar_inventarios(request):
+    inventarios = Inventario.objects.all()
+    return render(request, 'inventarios/listar_inventario.html', {'inventarios': inventarios})
+
+def editar_inventario(request, id):
+    inventario = get_object_or_404(Inventario, id=id)
+    if request.method == 'POST':
+        form = InventarioForm(request.POST, instance=inventario)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_inventarios')
+    else:
+        form = InventarioForm(instance=inventario)
+    return render(request, 'inventarios/editar_inventario.html', {'form': form, 'inventario': inventario})
+
+def excluir_inventario(request, pk):
+    inventario = get_object_or_404(Inventario, pk=pk)
+    inventario.delete()
+    return redirect('listar_inventarios')
