@@ -6,6 +6,10 @@ urlpatterns = [
     path('patrimonios/novo/', views.criar_patrimonio, name='criar_patrimonio'),
     path('patrimonios/<int:id>/editar/', views.editar_patrimonio, name='editar_patrimonio'),
     path('patrimonios/<int:pk>/excluir/', views.excluir_patrimonio, name='excluir_patrimonio'),
+    path('emprestimos/', views.listar_emprestimos, name='listar_emprestimos'),
+    path('emprestimos/novo/', views.criar_emprestimo, name='criar_emprestimo'),
+    path('emprestimos/<int:id>/editar/', views.editar_emprestimo, name='editar_emprestimo'),
+    path('emprestimos/<int:pk>/excluir/', views.excluir_emprestimo, name='excluir_emprestimo'),
     # path('inventarios/', views.listar_inventarios, name='listar_inventarios'),
     # path('emprestimos/', views.listar_emprestimos, name='listar_emprestimos'),
 ]

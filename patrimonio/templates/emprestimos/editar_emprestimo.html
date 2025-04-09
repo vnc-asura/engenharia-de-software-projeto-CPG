@@ -1,0 +1,11 @@
+{% extends 'emprestimos/base.html' %}
+
+{% block content %}
+<h1>Editar Empréstimo</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Salvar</button>
+    <a href="{% url 'listar_emprestimos' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}
