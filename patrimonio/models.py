@@ -156,6 +156,7 @@ class Emprestimo(models.Model):
         (4, 'Cancelado'),
     ]
     emp_pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE)
+    emp_patrimonio = models.ForeignKey(Patrimonio, on_delete=models.CASCADE)
     emp_criado = models.DateField()
     emp_efetivado = models.DateField()
     emp_prazo = models.IntegerField()

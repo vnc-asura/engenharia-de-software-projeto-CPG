@@ -10,6 +10,7 @@
     <thead class="table-dark">
         <tr>
             <th>Pessoa</th>
+            <th>Patrimônio</th>
             <th>Anotação</th>
             <th>Data de Empréstimo</th>
             <th>Data de Devolução</th>
@@ -20,6 +21,7 @@
         {% for emprestimo in emprestimos %}
         <tr>
             <td>{{ emprestimo.emp_pessoa }}</td>
+            <td>{{ emprestimo.emp_patrimonio }}</td>
             <td>{{ emprestimo.emp_anotacao }}</td>
             <td>{{ emprestimo.emp_criado }}</td>
             <td>{{ emprestimo.emp_devolvido }}</td>

@@ -90,6 +90,7 @@ def populate(n=10):
         # Criar Empréstimo
         emprestimo = Emprestimo.objects.create(
             emp_pessoa=pessoa,
+            emp_patrimonio=patrimonio, 
             emp_criado=fake.date_this_year(),
             emp_efetivado=fake.date_this_year(),
             emp_prazo=fake.random_int(min=1, max=365),

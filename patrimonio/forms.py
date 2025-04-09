@@ -26,6 +26,7 @@ class EmprestimoForm(forms.ModelForm):
         fields = '__all__'
         widgets = {
             'emp_pessoa': forms.Select(attrs={'class': 'form-control'}),
+            'emp_patrimonio': forms.Select(attrs={'class': 'form-control'}),
             'emp_criado': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
             'emp_efetivado': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
             'emp_prazo': forms.NumberInput(attrs={'class': 'form-control'}),
